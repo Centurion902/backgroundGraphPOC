@@ -70,7 +70,7 @@
           g = parseInt(document.getElementById('green').value, 10),
           b = parseInt(document.getElementById('blue').value, 10);
       
-      document.getElementById('controlColor').style.background = 'linear-gradient(rgb('+r+', '+g+', '+b+'),rgb('+(g+b)/2+','+(b+r)/2+','+(r+g)/2+'))';
+      document.getElementById('controlColor').style.background = 'linear-gradient(rgb('+r*255/(r+g+b)+', '+g*255/(r+g+b)+', '+b*255/(r+g+b)+'),rgb('+(g+b)/2*255/(r+g+b)+','+(b+r)/2*255/(r+g+b)+','+(r+g)/2*255/(r+g+b)+'))';
       foo(r,g,b);
     }
 

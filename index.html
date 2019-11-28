@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+  </head>
+
+  <body style="background: black">
+    <div id="chartContainer" style="margin-left: 5vw; float: left; height: 25wh; width: 25vw;">
+    </div>
+
+    
+    
+    <div id="controlColor" style="margin:auto; width: 40%; border-radius: 30%;">
+      <img src="/img/ezgif.com-gif-maker (2).gif" style="display:block; margin:auto; width:100%; border: 10px black;border-radius: 25%;">
+    </div>
+
+    <div class="slider" data-role="fieldcontain" data-controltype="slider" class="redSlider">      
+      <label for="red" color="red">
+          <h4 style='color:white'>Red</h4>
+      </label>
+      <input id="red" type="range" name="redSlider" value="200" min="0" max="255"
+      data-highlight="true" data-mini="true" onchange = "changeBackground()" />
+    </div>
+    <div class="slider" data-role="fieldcontain" data-controltype="slider" class="greenSlider">
+      <label for="green">
+        <h4 style='color:white'>Green</h4>
+      </label>
+      <input id="green" type="range" name="greenSlider" value="200" min="0"
+      max="255" data-highlight="true" data-mini="true" onchange = "changeBackground()" />
+    </div>
+    <div class="slider" data-role="fieldcontain" data-controltype="slider" class="blueSlider">
+      <label for="blue">
+        <h4 style='color:white'>Blue</h4>
+      </label>
+      <input id="blue" type="range" name="blueSlider" value="200" min="0" max="255"
+      data-highlight="true" data-mini="true" onchange = "changeBackground()" />
+    </div>
+    
+
+    <script type="text/javascript">
+    window.onload = function setup(){
+      changeBackground();
+    }
+
+    function foo(r=10,g=20,b=30) {
+      var chart = new CanvasJS.Chart("chartContainer",
+      {
+        backgroundColor: "rgba(0,0,0,0)",
+        title:{
+          text: "Top U.S Smartphone Operating Systems By Market Share, Q3 2012"
+        },
+        data: [
+        {
+        type: "doughnut",
+        dataPoints: [
+        {  y: b, indexLabel: "Android" },
+        {  y: r, indexLabel: "Apple iOS" },
+        {  y: g, indexLabel: "Blackberry" },
+        ]
+      }
+      ]
+    });
+
+      chart.render();
+    }
+
+    function changeBackground () {
+      var r = parseInt(document.getElementById('red').value, 10),
+          g = parseInt(document.getElementById('green').value, 10),
+          b = parseInt(document.getElementById('blue').value, 10);
+      
+      document.getElementById('controlColor').style.background = 'linear-gradient(rgb('+r+', '+g+', '+b+'),rgb('+(g+b)/2+','+(b+r)/2+','+(r+g)/2+'))';
+      foo(r,g,b);
+    }
+
+    </script>
+
+
+    
+  </body>
+ </html>
